@@ -1,0 +1,21 @@
+.left-side-bar
+  .left-side-header
+    .left-header-center-box 
+      .left-header-left-box 
+        = current_user.name
+      .left-header-right-box 
+        = link_to new_group_path, class: "contents__btn" do
+          %i.fas.fa-edit.fa-white.fa-margin
+          
+        = link_to edit_user_path(current_user), class: "contents__btn" do
+          %i.fas.fa-cog.fa-white
+  .left-side-content
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group), class: "contents__btn" do
+          .left-content-title
+            = group.name
+          .left-content-message             
+            = group.show_last_message
+            
+              

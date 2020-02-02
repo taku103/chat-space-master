@@ -1,0 +1,23 @@
+.main
+  .main-header
+    .main-header-left
+      .main-header-title
+        = @group.name
+      .main-header-member 
+        = @group.show_member
+    .main-header-right 
+      = link_to edit_group_path(@group), class: "contents__btn" do
+        Edit
+  .main-content
+    = render @messages
+    
+  .footer
+    = form_for [@group, @message], html: {class: "main-footer"} do |f|
+      .footer-input-box
+        = f.text_field :text, class: 'text-box', placeholder: 'type a message'
+        = f.label :image, class: 'input_box__image' do
+          -# = icon('far', 'image', class: 'icon')
+          %i.far.fa-image
+          = f.file_field :image, class: 'input_box_image__file'
+      .footer-send-box
+        = f.submit 'Send', class: 'submit-btn'
