@@ -31,28 +31,28 @@ $(function(){
   var buildHTML = function(message) {
     
     //data-idが反映されるようにしている
-    let html = `<div class="main-text-box" data-message-id=` + message.id + `>` +
-      `<div class="main-title-box">` +
-        `<div class="main-text-name">` +
-          message.user_name +
-        `</div>` +
-        `<div class="main-text-time">` +
-          message.created_at +
-        `</div>` +
-      `</div>` +
-      `<div class="main-text-message">`
+    let html = `<div class="main-text-box" data-message-id=${message.id}> 
+      <div class="main-title-box">
+        <div class="main-text-name">
+          ${message.user_name}
+        </div>
+        <div class="main-text-time">
+          ${message.created_at}
+        </div>
+      </div>
+      <div class="main-text-message">`
 
       if(message.text){
-        html = html +  `<p class="message-text">` +
-                  message.text +
-                `</p>` 
+        html = html +  `<p class="message-text">
+                  ${message.text}
+                </p>` 
       }
       if(message.image){
-        html = html + `<img src="` + message.image + `" class="content-message__image" >` 
+        html = html + `<img src="${message.image}" class="content-message__image" >`
       }
-      +
-      `</div>` +
-    `</div>`
+      
+      html = html +  `</div>
+                    </div>`
     
     return html;
   };
@@ -86,9 +86,6 @@ $(function(){
         $('.main-content').animate({ scrollTop: $('.main-content')[0].scrollHeight});
       }
     })
-    .fail(function() {
-      console.log('error');
-    });
   };
   //$(function(){});の閉じタグの直上(処理の最後)に以下のように追記
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
