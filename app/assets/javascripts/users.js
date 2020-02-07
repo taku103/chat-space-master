@@ -53,8 +53,6 @@ $(function(){
   $("#user-search-field").on("keyup", function(){
 
     let input = $("#user-search-field").val()
-    console.log(input)
-
     $.ajax({
       type: "GET",
       url: "/users",
@@ -63,7 +61,6 @@ $(function(){
     })
     .done(function(users){
       search_list.empty()
-      console.log(users)
       if (users.length  !== 0){
         users.forEach(function(user){
           addUser(user)
@@ -75,7 +72,7 @@ $(function(){
       }
     })
     .fail(function(){
-      console.log("エラー")
+      alert("通信エラーです。ユーザーが表示できません。")
     })
   })
 })
